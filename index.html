@@ -1,335 +1,235 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="tr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>For My Beloved İrem ❤️</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>To my favorite girl <3</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-        body {
-            background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-            color: #ffffff;
-            position: relative;
-            overflow: hidden;
-        }
+    body {
+      background: #05050d;
+      color: #fff;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      overflow-x: hidden;
+      position: relative;
+    }
 
-        /* Yıldızlı Arka Plan */
-        .stars {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 1;
-        }
+    canvas#fireworks {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      pointer-events: none;
+    }
 
-        .star {
-            position: absolute;
-            background: white;
-            border-radius: 50%;
-            animation: twinkle var(--duration) infinite ease-in-out;
-        }
+    .container {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      padding: 2rem;
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+      max-width: 90%;
+      width: 400px;
+    }
 
-        @keyframes twinkle {
-            0%, 100% { opacity: 0.3; transform: scale(0.8); }
-            50% { opacity: 1; transform: scale(1.2); }
-        }
+    .header-title {
+      font-size: 1.6rem;
+      margin-bottom: 1.5rem;
+      color: #ff79c6;
+      text-shadow: 0 0 10px rgba(255, 121, 198, 0.5);
+      font-weight: 600;
+    }
 
-        /* Kart Tasarımı */
-        .card {
-            background: rgba(15, 23, 42, 0.75);
-            backdrop-filter: blur(12px);
-            border-radius: 24px;
-            padding: 40px 25px;
-            max-width: 420px;
-            width: 100%;
-            text-align: center;
-            box-shadow: 0 0 30px rgba(255, 182, 193, 0.2), inset 0 0 15px rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            z-index: 10;
-            position: relative;
-        }
+    .counter-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+      margin-bottom: 1.5rem;
+    }
 
-        .icon-header {
-            font-size: 48px;
-            margin-bottom: 10px;
-            display: inline-block;
-            animation: pulse 2s infinite;
-        }
+    .time-box {
+      background: rgba(255, 255, 255, 0.08);
+      padding: 12px;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
 
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.1); }
-            100% { transform: scale(1); }
-        }
+    .time-value {
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: #bd93f9;
+    }
 
-        h1 {
-            color: #ffb7c5;
-            font-size: 28px;
-            margin-bottom: 10px;
-            text-shadow: 0 0 10px rgba(255, 183, 197, 0.5);
-            font-weight: 600;
-        }
+    .time-label {
+      font-size: 0.8rem;
+      color: #aaa;
+      margin-top: 4px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
 
-        p.subtitle {
-            font-size: 14px;
-            color: #cbd5e1;
-            margin-bottom: 25px;
-            font-style: italic;
-        }
+    .cat-icon {
+      font-size: 2.5rem;
+      margin-top: 10px;
+      animation: float 3s ease-in-out infinite;
+      display: inline-block;
+    }
 
-        .counter-container {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 20px 15px;
-            border-radius: 18px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            margin-bottom: 25px;
-        }
-
-        .counter-title {
-            font-size: 12px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: #ffb7c5;
-            font-weight: 600;
-            margin-bottom: 12px;
-        }
-
-        .timer {
-            display: flex;
-            justify-content: space-around;
-        }
-
-        .time-box {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .time-number {
-            font-size: 22px;
-            font-weight: 700;
-            color: #ffffff;
-            text-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
-        }
-
-        .time-label {
-            font-size: 10px;
-            color: #94a3b8;
-            margin-top: 4px;
-            letter-spacing: 1px;
-        }
-
-        .message-box {
-            background: rgba(255, 183, 197, 0.08);
-            border-left: 3px solid #ffb7c5;
-            padding: 18px;
-            border-radius: 12px;
-            text-align: left;
-            font-size: 14px;
-            line-height: 1.7;
-            color: #e2e8f0;
-        }
-
-        /* Sakura (Kiraz Çiçeği Yaprağı) Efekti */
-        .sakura {
-            position: absolute;
-            background: #ffb7c5;
-            border-radius: 100% 0 100% 0;
-            opacity: 0.7;
-            pointer-events: none;
-            z-index: 2;
-            animation: fall var(--duration) linear infinite;
-        }
-
-        @keyframes fall {
-            0% {
-                transform: translateY(-10vh) rotate(0deg) translateX(0);
-                opacity: 0.8;
-            }
-            100% {
-                transform: translateY(105vh) rotate(360deg) translateX(100px);
-                opacity: 0.2;
-            }
-        }
-
-        /* Havai Fişek Tuvali */
-        canvas#fireworks {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 3;
-        }
-    </style>
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+  </style>
 </head>
 <body>
 
-    <div class="stars" id="starContainer"></div>
-    <canvas id="fireworks"></canvas>
+  <canvas id="fireworks"></canvas>
 
-    <div class="card">
-        <div class="icon-header">🌸</div>
-        <h1>İrem & Me</h1>
-        <p class="subtitle">My favorite story began with you...</p>
-
-        <div class="counter-container">
-            <div class="counter-title">Time Spent Together</div>
-            <div class="timer">
-                <div class="time-box"><span class="time-number" id="days">0</span><span class="time-label">DAYS</span></div>
-                <div class="time-box"><span class="time-number" id="hours">0</span><span class="time-label">HOURS</span></div>
-                <div class="time-box"><span class="time-number" id="minutes">0</span><span class="time-label">MINS</span></div>
-                <div class="time-box"><span class="time-number" id="seconds">0</span><span class="time-label">SECS</span></div>
-            </div>
-        </div>
-
-        <div class="message-box">
-            Dearest İrem, thank you for bringing so much light, warmth, and joy into my life. Every second spent with you feels like magic under a sky full of stars. I love you more than words can say! ✨
-        </div>
+  <div class="container">
+    <div class="header-title">to my favorite girl &lt;3</div>
+    
+    <div class="counter-grid">
+      <div class="time-box">
+        <div class="time-value" id="days">0</div>
+        <div class="time-label">Gün</div>
+      </div>
+      <div class="time-box">
+        <div class="time-value" id="hours">0</div>
+        <div class="time-label">Saat</div>
+      </div>
+      <div class="time-box">
+        <div class="time-value" id="minutes">0</div>
+        <div class="time-label">Dakika</div>
+      </div>
+      <div class="time-box">
+        <div class="time-value" id="seconds">0</div>
+        <div class="time-label">Saniye</div>
+      </div>
     </div>
 
-    <script>
-        // TARİH AYARI: 4 Şubat 2026, Saat 02:51
-        // Ay indeksi 0'dan başladığı için Şubat = 1
-        const startDate = new Date(2026, 1, 4, 2, 51, 0); 
+    <div class="cat-icon">🐈‍⬛</div>
+  </div>
 
-        function updateTimer() {
-            const now = new Date();
-            const diff = now - startDate;
+  <script>
+    // Canlı Sayaç Mantığı (4 Şubat 2026, 02:51)
+    const startDate = new Date('2026-02-04T02:51:00');
 
-            if (diff < 0) {
-                // Eğer tarih henüz gelmediyse veya test ediliyorsa negatif görünmesin
-                document.getElementById('days').innerText = 0;
-                document.getElementById('hours').innerText = 0;
-                document.getElementById('minutes').innerText = 0;
-                document.getElementById('seconds').innerText = 0;
-                return;
-            }
+    function updateCounter() {
+      const now = new Date();
+      const diff = now - startDate;
 
-            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-            const minutes = Math.floor((diff / 1000 / 60) % 60);
-            const seconds = Math.floor((diff / 1000) % 60);
+      if (diff > 0) {
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+        const minutes = Math.floor((diff / 1000 / 60) % 60);
+        const seconds = Math.floor((diff / 1000) % 60);
 
-            document.getElementById('days').innerText = days;
-            document.getElementById('hours').innerText = hours;
-            document.getElementById('minutes').innerText = minutes;
-            document.getElementById('seconds').innerText = seconds;
+        document.getElementById('days').innerText = days;
+        document.getElementById('hours').innerText = hours;
+        document.getElementById('minutes').innerText = minutes;
+        document.getElementById('seconds').innerText = seconds;
+      }
+    }
+
+    setInterval(updateCounter, 1000);
+    updateCounter();
+
+    // Belirgin ve Yoğun Havai Fişek Efekti
+    const canvas = document.getElementById('fireworks');
+    const ctx = canvas.getContext('2d');
+
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    class Particle {
+      constructor(x, y, color) {
+        this.x = x;
+        this.y = y;
+        this.color = color;
+        this.radius = Math.random() * 3 + 1.5;
+        const angle = Math.random() * Math.PI * 2;
+        const speed = Math.random() * 6 + 2;
+        this.velocity = {
+          x: Math.cos(angle) * speed,
+          y: Math.sin(angle) * speed
+        };
+        this.alpha = 1;
+        this.decay = Math.random() * 0.015 + 0.008;
+      }
+
+      draw() {
+        ctx.save();
+        ctx.globalAlpha = this.alpha;
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+        ctx.fillStyle = this.color;
+        ctx.shadowBlur = 12;
+        ctx.shadowColor = this.color;
+        ctx.fill();
+        ctx.restore();
+      }
+
+      update() {
+        this.velocity.y += 0.05; // Yerçekimi
+        this.x += this.velocity.x;
+        this.y += this.velocity.y;
+        this.alpha -= this.decay;
+      }
+    }
+
+    let particles = [];
+    const colors = ['#ff79c6', '#bd93f9', '#ffb86c', '#50fa7b', '#8be9fd', '#ff5555'];
+
+    function createFirework() {
+      const x = Math.random() * canvas.width;
+      const y = Math.random() * (canvas.height * 0.6);
+      const color = colors[Math.floor(Math.random() * colors.length)];
+      for (let i = 0; i < 45; i++) {
+        particles.push(new Particle(x, y, color));
+      }
+    }
+
+    function animate() {
+      ctx.fillStyle = 'rgba(5, 5, 13, 0.2)';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      particles.forEach((particle, index) => {
+        if (particle.alpha > 0) {
+          particle.update();
+          particle.draw();
+        } else {
+          particles.splice(index, 1);
         }
-        setInterval(updateTimer, 1000);
-        updateTimer();
+      });
 
-        // Arka Plan Yıldızları
-        const starContainer = document.getElementById('starContainer');
-        for (let i = 0; i < 80; i++) {
-            const star = document.createElement('div');
-            star.classList.add('star');
-            star.style.width = Math.random() * 3 + 'px';
-            star.style.height = star.style.width;
-            star.style.left = Math.random() * 100 + '%';
-            star.style.top = Math.random() * 100 + '%';
-            star.style.setProperty('--duration', (Math.random() * 3 + 2) + 's');
-            starContainer.appendChild(star);
-        }
+      if (Math.random() < 0.08) {
+        createFirework();
+      }
 
-        // Sakura Yaprakları
-        function createSakura() {
-            const sakura = document.createElement('div');
-            sakura.classList.add('sakura');
-            sakura.style.left = Math.random() * 100 + 'vw';
-            const size = Math.random() * 8 + 8;
-            sakura.style.width = size + 'px';
-            sakura.style.height = (size * 1.2) + 'px';
-            sakura.style.setProperty('--duration', (Math.random() * 5 + 5) + 's');
-            document.body.appendChild(sakura);
+      requestAnimationFrame(animate);
+    }
 
-            setTimeout(() => { sakura.remove(); }, 10000);
-        }
-        setInterval(createSakura, 350);
-
-        // Havai Fişek Efekti
-        const canvas = document.getElementById('fireworks');
-        const ctx = canvas.getContext('2d');
-        let particles = [];
-
-        function resizeCanvas() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        }
-        window.addEventListener('resize', resizeCanvas);
-        resizeCanvas();
-
-        class Particle {
-            constructor(x, y, color) {
-                this.x = x;
-                this.y = y;
-                this.color = color;
-                this.velocity = {
-                    x: (Math.random() - 0.5) * 6,
-                    y: (Math.random() - 0.5) * 6
-                };
-                this.alpha = 1;
-                this.friction = 0.96;
-            }
-
-            draw() {
-                ctx.globalAlpha = this.alpha;
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, 2, 0, Math.PI * 2);
-                ctx.fillStyle = this.color;
-                ctx.fill();
-            }
-
-            update() {
-                this.velocity.x *= this.friction;
-                this.velocity.y *= this.friction;
-                this.x += this.velocity.x;
-                this.y += this.velocity.y;
-                this.alpha -= 0.015;
-            }
-        }
-
-        function launchFirework() {
-            const x = Math.random() * canvas.width;
-            const y = Math.random() * (canvas.height * 0.5);
-            const colors = ['#ffb7c5', '#ff6b81', '#70a1ff', '#eccc68', '#ffffff'];
-            const color = colors[Math.floor(Math.random() * colors.length)];
-
-            for (let i = 0; i < 30; i++) {
-                particles.push(new Particle(x, y, color));
-            }
-        }
-
-        function animateFireworks() {
-            requestAnimationFrame(animateFireworks);
-            ctx.fillStyle = 'rgba(0, 0, 0, 0.1)';
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-            particles.forEach((particle, index) => {
-                if (particle.alpha > 0) {
-                    particle.update();
-                    particle.draw();
-                } else {
-                    particles.splice(index, 1);
-                }
-            });
-        }
-
-        setInterval(launchFirework, 1500);
-        animateFireworks();
-    </script>
+    animate();
+  </script>
 </body>
 </html>
