@@ -1,31 +1,31 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>To my favorite girl <3</title>
+  <title>For My Beloved İrem ❤️</title>
   <style>
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
+      font-family: 'Poppins', 'Segoe UI', sans-serif;
     }
 
     body {
       background: #05050d;
-      color: #fff;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #ffffff;
       min-height: 100vh;
       display: flex;
-      flex-direction: column;
-      align-items: center;
       justify-content: center;
-      overflow-x: hidden;
+      align-items: center;
+      padding: 20px;
       position: relative;
+      overflow-x: hidden;
     }
 
     canvas#fireworks {
-      position: absolute;
+      position: fixed;
       top: 0;
       left: 0;
       width: 100%;
@@ -34,66 +34,84 @@
       pointer-events: none;
     }
 
-    .container {
+    .card {
       position: relative;
       z-index: 2;
-      text-align: center;
-      padding: 2rem;
       background: rgba(255, 255, 255, 0.05);
-      backdrop-filter: blur(10px);
-      border-radius: 20px;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-      max-width: 90%;
-      width: 400px;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 24px;
+      padding: 30px;
+      max-width: 500px;
+      width: 100%;
+      text-align: center;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
     }
 
-    .header-title {
-      font-size: 1.6rem;
-      margin-bottom: 1.5rem;
+    .favorite-title {
+      font-size: 1.4rem;
       color: #ff79c6;
       text-shadow: 0 0 10px rgba(255, 121, 198, 0.5);
       font-weight: 600;
+      margin-bottom: 5px;
+    }
+
+    .subtitle {
+      font-size: 0.95rem;
+      color: #bd93f9;
+      margin-bottom: 25px;
+      font-style: italic;
     }
 
     .counter-grid {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 15px;
-      margin-bottom: 1.5rem;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      margin-bottom: 25px;
     }
 
     .time-box {
       background: rgba(255, 255, 255, 0.08);
-      padding: 12px;
+      padding: 10px 5px;
       border-radius: 12px;
-      border: 1px solid rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
     }
 
     .time-value {
-      font-size: 1.8rem;
+      font-size: 1.4rem;
       font-weight: bold;
-      color: #bd93f9;
+      color: #f8f8f2;
     }
 
     .time-label {
-      font-size: 0.8rem;
+      font-size: 0.75rem;
       color: #aaa;
-      margin-top: 4px;
       text-transform: uppercase;
-      letter-spacing: 1px;
+      margin-top: 2px;
+    }
+
+    .letter-box {
+      background: rgba(0, 0, 0, 0.25);
+      padding: 20px;
+      border-radius: 16px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      text-align: left;
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: #e2e8f0;
+      margin-bottom: 20px;
     }
 
     .cat-icon {
       font-size: 2.5rem;
-      margin-top: 10px;
       animation: float 3s ease-in-out infinite;
       display: inline-block;
     }
 
     @keyframes float {
       0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-10px); }
+      50% { transform: translateY(-8px); }
     }
   </style>
 </head>
@@ -101,26 +119,33 @@
 
   <canvas id="fireworks"></canvas>
 
-  <div class="container">
-    <div class="header-title">to my favorite girl &lt;3</div>
-    
+  <div class="card">
+    <div class="favorite-title">to my favorite girl &lt;3</div>
+    <div class="subtitle">Every second with you is a gift I cherish deeply.</div>
+
     <div class="counter-grid">
       <div class="time-box">
         <div class="time-value" id="days">0</div>
-        <div class="time-label">Gün</div>
+        <div class="time-label">Days</div>
       </div>
       <div class="time-box">
         <div class="time-value" id="hours">0</div>
-        <div class="time-label">Saat</div>
+        <div class="time-label">Hours</div>
       </div>
       <div class="time-box">
         <div class="time-value" id="minutes">0</div>
-        <div class="time-label">Dakika</div>
+        <div class="time-label">Mins</div>
       </div>
       <div class="time-box">
         <div class="time-value" id="seconds">0</div>
-        <div class="time-label">Saniye</div>
+        <div class="time-label">Secs</div>
       </div>
+    </div>
+
+    <div class="letter-box">
+      Dearest İrem,<br><br>
+      From the moment you entered my life, everything became brighter and full of color. This timer counts every single moment we've shared, but words can never truly capture how much you mean to me.<br><br>
+      Thank you for being my favorite person, my happiness, and my favorite girl. ❤️
     </div>
 
     <div class="cat-icon">🐈‍⬛</div>
@@ -150,7 +175,7 @@
     setInterval(updateCounter, 1000);
     updateCounter();
 
-    // Belirgin ve Yoğun Havai Fişek Efekti
+    // Parlak ve Canlı Havai Fişek Efekti
     const canvas = document.getElementById('fireworks');
     const ctx = canvas.getContext('2d');
 
@@ -190,7 +215,7 @@
       }
 
       update() {
-        this.velocity.y += 0.05; // Yerçekimi
+        this.velocity.y += 0.05;
         this.x += this.velocity.x;
         this.y += this.velocity.y;
         this.alpha -= this.decay;
